@@ -12,7 +12,7 @@ const NotificationBoard = () => {
 
     return(
        <div className = "card bg-sky-100 shadow-md rounded-lg p-6 w-full md:w-2/3 lg:w-1/2 mx-auto">
-            <h2 className = "text-lg font-bold text-gray-800 mb-2">🔔 Notifications</h2>
+            <h2 className = "text-lg font-bold text-center text-gray-800 mb-2">🔔 Notifications</h2>
 
             {notifications.length > 0 ? (
                 <ul className = "space-y-2">
@@ -23,9 +23,9 @@ const NotificationBoard = () => {
                                 <p className = "text-sm text-gray-800">{notif.time}</p>
                             </div>
                             <button onClick={() => dismissNotification(notif.id)}
-                            className = "btn btn-sm btn-circle btn-ghost"
+                            className = "btn btn-circle bg-gray-900 text-white text-lg flex items-center justify-center w-8 h-8"
                             >
-                                ✖
+                                <span className = "text-bold">X</span>
                             </button>
                         </li>
                     ))}
