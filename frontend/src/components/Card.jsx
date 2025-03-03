@@ -15,7 +15,7 @@ const Card = ({ title, description, image, link}) => {
             {/* Image Section */}
             {image && (
                 <figure>
-                    <img src={image} alt={title} className="w-full h-full object-cover rounded-t-lg"/>
+                    <img src={image} alt={title} className="w-[200px] h-[200px] object-cover rounded-t-lg"/>
                 </figure>
             )}
 

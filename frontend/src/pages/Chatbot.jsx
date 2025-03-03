@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
 const API_URL = 'http://localhost:5001/api/messages';
 
@@ -40,6 +41,7 @@ function Chatbot() {
 
     return(
         <div className = 'min-h-screen flex flex-col bg-gray-500'>
+            <Navbar />
             <div className = 'flex-1 flex flex-col items-center justify-center p-6'>
                 <div className = 'w-full max-w-2xl bg-gray-400 shadow-lg rounded-2xl flex flex-col h-[500px]'>
                     <div className = 'flex-1 overflow-y-auto p-6 space-y-3'>

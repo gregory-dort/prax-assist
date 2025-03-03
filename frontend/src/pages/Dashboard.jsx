@@ -2,31 +2,42 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import NotificationBoard from '../components/NotificationBoard';
+import prImage from '../assets/patient-records.png';
+import kbImage from '../assets/knowledge-database.png';
+import cbImage from '../assets/chatbot.png';
+import lrImage from '../assets/lab-results.png'
+import loImage from '../assets/lab-order.png';
 
 function Dashboard() {
     const menuItems = [
         {
             title: 'Medical Chatbot',
-            image: {},
+            image: cbImage,
             description: 'Interact with the chatbot for medical advice or knowledge',
             link: '/messages',
         },
         {
             title: 'Knowledge Database',
-            image: {},
+            image: kbImage,
             description: 'Medical Knowledgebase with information on diseases, lab tests and symptoms',
             link: '/knowledgebase',
         },
         {
             title: 'Patient Records',
-            image: {},
+            image: prImage,
             description: 'Access and manage patient information. (Medical History, Lab Results, etc.)',
             link: '/patient-records',
         },
         {
+            title: 'Lab Results',
+            image: lrImage,
+            description: 'View patient lab test results',
+            link: '/lab-results',
+        },
+        {
             title: 'Lab Order',
-            image: {},
-            description: 'Access and manage patient information.',
+            image: loImage,
+            description: 'Order tests to be performed for patients and view test results',
             link: '/lab-order',
         },
     ]

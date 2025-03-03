@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 
-const LabOrder = () => {
+const LabResults = () => {
     return(
         <div>
             <Navbar />
@@ -8,4 +8,4 @@ const LabOrder = () => {
     );
 };
 
-export default LabOrder;
+export default LabResults;

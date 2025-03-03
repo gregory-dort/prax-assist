@@ -7,6 +7,7 @@ import Chatbot from './pages/Chatbot';
 import KnowledgeBase from './pages/KnowledgeBase';
 import PatientRecords from './pages/PatientRecord';
 import LabOrder from './pages/LabOrder';
+import LabResults from './pages/LabResults';
 import './styles/index.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/knowledgebase" element = {<KnowledgeBase />}/>
         <Route path = "/patient-records" element = {<PatientRecords />}/>
         <Route path = "/lab-order" element = {<LabOrder />}/>
+        <Route path = "/lab-results" element = {<LabResults />}/>
         <Route path = "/logout" element = {<Logout />}/>
         <Route path = "*" element = {<Navigate to = "/" />} />
       </Routes>
