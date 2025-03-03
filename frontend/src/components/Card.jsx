@@ -6,16 +6,23 @@ const Card = ({ title, description, image, link}) => {
     const navigate = useNavigate();
 
     return(
-        <div className = "card"
+        <div className = "card bg-sky-100 shadow-lg hover:shadow-xl transition-transform transform hover:scale-110 cursor-pointer"
              role = "button"
              tabIndex = "0"
              onClick = {() => navigate(link)}
              onKeyDown = {(e) => e.key === 'Enter' && navigate(link)}
         >
-           {image && <img src = {image} alt = {title} className = "card-image" />}
-           <div className = "card-content">
-            <h2 className = "card-title">{title}</h2>
-            <p className = "card-description">{description}</p>
+            {/* Image Section */}
+            {image && (
+                <figure>
+                    <img src={image} alt={title} className="w-full h-full object-cover rounded-t-lg"/>
+                </figure>
+            )}
+
+            {/* Card Content */}
+           <div className = "card-body text-center p-6">
+                <h2 className = "card-title w-full justify-center text-lg font-bold text-gray-800">{title}</h2>
+                <p className = "text-gray-800">{description}</p>
            </div>
         </div>
     );

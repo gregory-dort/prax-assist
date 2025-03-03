@@ -23,7 +23,7 @@ const Logout = () => {
         }
     };
 
-    return <button onClick={handleLogout}>Logout</button>;
+    return <button onClick={handleLogout} className = "text-gray-800">Logout</button>;
 };
 
 export default Logout;

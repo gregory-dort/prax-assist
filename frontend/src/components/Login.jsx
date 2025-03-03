@@ -48,7 +48,7 @@ function Login() {
 
       {/* Login Card (Container) */}
       <div className = "relative z-10 card w-96 bg-white shadow-xl p-6 rounded-2xl">
-        <h1 className = "text-2xl font-bold text-center mb-4">Login</h1>
+        <h1 className = "text-2xl font-bold text-center text-gray-600 mb-4">Login</h1>
         <form onSubmit = {handleLogin} className = "flex flex-col gap-4">
           <input 
             type="text" 
@@ -66,7 +66,7 @@ function Login() {
           />
           <button type = "submit" className = "btn btn-primary hover:bg-blue-400 w-full rounded-lg">Login</button> 
         </form>
-        <p className = "text-sm text-center mt-4">
+        <p className = "text-sm text-center text-gray-600 mt-4">
           Don&apos;t have an account yet? <Link to = "/create-account" className = "text-primary">Create one here</Link>
         </p>
       </div> 

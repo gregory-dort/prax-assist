@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const API_URL = 'http://localhost:5001/api/messages';
 
@@ -41,23 +39,39 @@ function Chatbot() {
     };
 
     return(
-        <div className = 'chatbot-container'>
-            <Header />
-            <div className = 'message-log-container'>
-                {messages.map((msg, idx) => (
-                    <div key = {idx}>
-                        <strong>{msg.sender}:</strong> {msg.content}
+        <div className = 'min-h-screen flex flex-col bg-gray-500'>
+            <div className = 'flex-1 flex flex-col items-center justify-center p-6'>
+                <div className = 'w-full max-w-2xl bg-gray-400 shadow-lg rounded-2xl flex flex-col h-[500px]'>
+                    <div className = 'flex-1 overflow-y-auto p-6 space-y-3'>
+                        {messages.map((msg, idx) => (
+                            <div 
+                                key = {idx}
+                                className = {`chat ${
+                                    msg.sender === 'User' ? 'chat-end' : 'chat-start'
+                                }`}
+                            >
+                                <div
+                                    className = {`chat-bubble ${
+                                        msg.sender === 'User' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'
+                                    }`}
+                                >
+                                    <strong>{msg.sender}: </strong> {msg.content}
+                                </div>
+                            </div>
+                        ))}
+                        <div className = 'p-6 border-t flex items-center gap-2'>
+                            <input
+                                type = "text"
+                                value = {input}
+                                onChange = {(e) => setInput(e.target.value)}
+                                placeholder = "Type a message..."
+                                className = "input input-bordered w-full rounded-full"
+                            />
+                            <button onClick = {sendMessage} className = "btn btn-primary">Send</button>
+                        </div>
                     </div>
-                ))}
-                <input
-                    type = "text"
-                    value = {input}
-                    onChange = {(e) => setInput(e.target.value)}
-                    placeholder = "Type a message..."
-                />
-                <button onClick = {sendMessage}>Send</button>
+                </div>
             </div>
-            <Footer />
         </div>
     );
 };
