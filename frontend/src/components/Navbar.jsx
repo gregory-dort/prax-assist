@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
+import Profile from './Profile';
 import Logo from '../assets/praxassist-logo.jpg';
 import DefaultAvatar from '../assets/default-avatar.jpg';
 
@@ -27,7 +28,7 @@ const Navbar = () => {
                             </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-8 z-10 p-2 shadow bg-sky-100 rounded-box w-52">
-                        <li><Link to = "/account" className = "text-gray-800">Profile</Link></li>
+                        <li><Profile /></li>
                         <li><Link to = "/settings" className = "text-gray-800">Settings</Link></li>
                         <li><Logout /></li>
                     </ul>
@@ -47,7 +48,7 @@ const Navbar = () => {
                     </svg>
                 </label>
                 <ul tabIndex = {0} className = "menu menu-sm dropdown-content mt-8 z-10 p-2 shadow bg-sky-100 rounded-box w-52">
-                    <li><Link to = "/account" className = "text-gray-800">Account</Link></li>
+                    <li><Profile /></li>
                     <li><Link to = "/settings" className = "text-gray-800">Settings</Link></li>
                     <li><Logout /></li>
                 </ul>

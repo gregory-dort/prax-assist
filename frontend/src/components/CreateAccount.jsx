@@ -48,26 +48,26 @@ function CreateAccount() {
       <div className="absolute inset-0 bg-black/50 -z-10"></div>
 
       <div className = "relative z-10 card w-96 bg-white shadow-xl p-6 rounded-2xl">
-        <h1 className = "text-2xl font-bold text-center mb-4">Create Account</h1>
+        <h1 className = "text-2xl font-bold text-center text-gray-800 mb-4">Create Account</h1>
         <form onSubmit = {handleSubmit} className = "flex flex-col gap-4">
           <input 
             type="text" 
             value={username} 
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter username"
-            className = "input input-bordered border-2 border-gray-300 focus:border-primary focus:ring-primary w-full rounded-lg"
+            className = "input input-bordered border-2 border-gray-300 focus:border-blue-400 focus:ring-blue-400 w-full rounded-lg"
           />
           <input 
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
-            className = "input input-bordered border-2 border-gray-300 focus:border-primary focus:ring-primary w-full rounded-lg"
+            className = "input input-bordered border-2 border-gray-300 focus:border-blue-400 focus:ring-blue-400 w-full rounded-lg"
           />
-          <button type = "submit" className = "btn btn-primary hover:bg-blue-400 w-full rounded-lg">Create Account</button> 
+          <button type = "submit" className = "btn bg-sky-100 hover:bg-blue-400 text-gray-800 w-full rounded-lg">Create Account</button> 
         </form>
-        <p className = "text-sm text-center mt-4">
-          Already have an account? <Link to = "/Login"> Login Here! </Link>
+        <p className = "text-sm text-center text-gray-800 mt-4">
+          Already have an account? <Link to = "/Login" className = "text-gray-800 hover:text-blue-400"> Login Here! </Link>
         </p>
       </div>
     </div>
