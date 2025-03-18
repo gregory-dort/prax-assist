@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const PatientRecords = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedPatient, setSelectedPatient] = useState(null);
+    const [patients, setPatients] = useState([]);
 
-    // Sample patient data (Can be replaced with real API data)
-    const patients = [
-        { id: 1, name: "John Doe", age: 45, condition: "Hypertension", lastVisit: "March 10, 2025" },
-        { id: 2, name: "Jane Smith", age: 30, condition: "Diabetes Type 2", lastVisit: "March 8, 2025" },
-        { id: 3, name: "Robert Brown", age: 50, condition: "Chronic Kidney Disease", lastVisit: "March 12, 2025" }
-    ];
+    useEffect(() => {
+        // Sample patient data (Replace with API call)
+        const patientData = [
+            { id: 1, name: "John Doe", age: 45, height: "5'9\"", weight: "170 lbs", lastVisit: "March 10, 2025" },
+            { id: 2, name: "Jane Smith", age: 30, height: "5'6\"", weight: "140 lbs", lastVisit: "March 8, 2025" },
+            { id: 3, name: "Robert Brown", age: 50, height: "6'0\"", weight: "190 lbs", lastVisit: "March 12, 2025" },
+            { id: 4, name: "Emily Davis", age: 28, height: "5'5\"", weight: "130 lbs", lastVisit: "March 14, 2025" },
+            { id: 5, name: "Michael Johnson", age: 40, height: "5'11\"", weight: "180 lbs", lastVisit: "March 15, 2025" }
+        ];
+
+        // Sort patients alphabetically by name
+        const sortedPatients = patientData.sort((a, b) => a.name.localeCompare(b.name));
+        setPatients(sortedPatients);
+    }, []);
 
     // Filter patients based on search query
     const filteredPatients = patients.filter((patient) =>
@@ -18,10 +27,10 @@ const PatientRecords = () => {
     );
 
     return (
-        <div>
+        <div className="min-h-screen bg-navy">
             <Navbar />
             <div className="container mx-auto p-6">
-                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">📁 Patient Records</h1>
+                <h1 className="text-2xl font-bold text-center text-white mb-4">📁 Patient Records</h1>
 
                 {/* Search Bar */}
                 <input
@@ -42,13 +51,12 @@ const PatientRecords = () => {
                                 onClick={() => setSelectedPatient(patient)}
                             >
                                 <h2 className="text-lg font-semibold text-gray-800">{patient.name}</h2>
-                                <p className="text-sm text-gray-600">Condition: {patient.condition}</p>
                                 <p className="text-sm text-gray-600">Last Visit: {patient.lastVisit}</p>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p className="text-gray-800 text-center">No patient records found.</p>
+                    <p className="text-white text-center">No patient records found.</p>
                 )}
 
                 {/* Detailed View */}
@@ -56,7 +64,8 @@ const PatientRecords = () => {
                     <div className="mt-6 p-4 border border-gray-300 rounded-md bg-white shadow-md">
                         <h2 className="text-xl font-bold text-gray-800">{selectedPatient.name}</h2>
                         <p className="text-gray-700"><strong>Age:</strong> {selectedPatient.age}</p>
-                        <p className="text-gray-700"><strong>Condition:</strong> {selectedPatient.condition}</p>
+                        <p className="text-gray-700"><strong>Height:</strong> {selectedPatient.height}</p>
+                        <p className="text-gray-700"><strong>Weight:</strong> {selectedPatient.weight}</p>
                         <p className="text-gray-700"><strong>Last Visit:</strong> {selectedPatient.lastVisit}</p>
                         <button
                             onClick={() => setSelectedPatient(null)}
