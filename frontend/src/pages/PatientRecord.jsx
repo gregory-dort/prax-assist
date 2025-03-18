@@ -27,16 +27,16 @@ const PatientRecords = () => {
     );
 
     return (
-        <div className="min-h-screen bg-navy">
+        <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
             <div className="container mx-auto p-6">
-                <h1 className="text-2xl font-bold text-center text-white mb-4">📁 Patient Records</h1>
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">📁 Patient Records</h1>
 
                 {/* Search Bar */}
                 <input
                     type="text"
                     placeholder="Search by patient name..."
-                    className="w-full p-2 border border-gray-300 rounded-md mb-4"
+                    className="w-full p-2 border border-gray-300 rounded-md mb-4 text-gray-800"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -56,7 +56,7 @@ const PatientRecords = () => {
                         ))}
                     </ul>
                 ) : (
-                    <p className="text-white text-center">No patient records found.</p>
+                    <p className="text-gray-800 text-center">No patient records found.</p>
                 )}
 
                 {/* Detailed View */}

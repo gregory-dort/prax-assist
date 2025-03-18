@@ -6,7 +6,7 @@ import DefaultAvatar from '../assets/default-avatar.jpg';
 
 const Navbar = () => {
     return (
-        <div className = "navbar bg-blue-500 shadow-md px-6 items-center justify-center sticky top-0 left-0 w-full z-50">
+        <div className = "navbar bg-blue-400 shadow-md px-6 items-center justify-center sticky top-0 left-0 w-full z-50">
             {/* Logo and Text */}
             <div className = "flex-none flex items-center space-x-2">
                 <Link to = "/dashboard" className = "text-xl font-bold text-white flex items-center">
