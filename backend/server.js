@@ -45,7 +45,7 @@ app.use(
 );
 
 app.use("/api", authRoutes);
-app.use("/api", aiRoutes);
+//app.use("/api", aiRoutes);
 
 app.get("/", (req, res) => {
     res.send("PraxAssist is running...");
