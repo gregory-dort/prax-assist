@@ -6,6 +6,6 @@ This software development project is aimed to help medical professionals focus o
 
 Tech Stack Used:
 
-Frontend: React w/ TailwindCSS and DaisyUI Component Libraries
-Backend: Express.js and Node.js
+Frontend: React w/ TailwindCSS and DaisyUI Component Libraries 
+Backend: Express.js and Node.js 
 Database: MongoDB Atlas
