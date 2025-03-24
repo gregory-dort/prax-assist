@@ -36,14 +36,14 @@ const LabOrderForm = () => {
     };
 
     return (
-        <div className="min-h-screen bg-orange-50 text-black">
+        <div className="min-h-screen bg-gray-50 text-gray-800">
             <Navbar />
             <div className="max-w-4xl mx-auto p-6">
-                <h1 className="text-2xl font-bold text-center text-black mb-6">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
                     PraxAssist Lab Requisition Form
                 </h1>
 
-                <form onSubmit={handleSubmit} className="bg-white border border-gray-300 p-6 rounded-md shadow-md text-black">
+                <form onSubmit={handleSubmit} className="bg-white border border-gray-300 p-6 rounded-md shadow-md text-gray-800">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label className="block text-sm font-medium text-black">Patient Name</label>
@@ -52,7 +52,7 @@ const LabOrderForm = () => {
                                 name="patientName"
                                 value={formData.patientName}
                                 onChange={handleChange}
-                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-black"
+                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-gray-800"
                             />
                         </div>
                         <div>
@@ -62,7 +62,7 @@ const LabOrderForm = () => {
                                 name="dateOfBirth"
                                 value={formData.dateOfBirth}
                                 onChange={handleChange}
-                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-black"
+                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-gray-800"
                             />
                         </div>
                         <div>
@@ -72,7 +72,7 @@ const LabOrderForm = () => {
                                 name="ohipNumber"
                                 value={formData.ohipNumber}
                                 onChange={handleChange}
-                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-black"
+                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-gray-800"
                             />
                         </div>
                         <div>
@@ -82,7 +82,7 @@ const LabOrderForm = () => {
                                 name="clinicianName"
                                 value={formData.clinicianName}
                                 onChange={handleChange}
-                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-black"
+                                className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-gray-800"
                             />
                         </div>
                     </div>
@@ -100,7 +100,7 @@ const LabOrderForm = () => {
                                 />
                                 Glucose
                             </label>
-                            <label className="flex items-center text-black">
+                            <label className="flex items-center text-gray-800">
                                 <input
                                     type="checkbox"
                                     name="hba1c"
@@ -110,7 +110,7 @@ const LabOrderForm = () => {
                                 />
                                 HbA1C
                             </label>
-                            <label className="flex items-center text-black">
+                            <label className="flex items-center text-gray-800">
                                 <input
                                     type="checkbox"
                                     name="creatinine"
@@ -120,7 +120,7 @@ const LabOrderForm = () => {
                                 />
                                 Creatinine
                             </label>
-                            <label className="flex items-center text-black">
+                            <label className="flex items-center text-gray-800">
                                 <input
                                     type="checkbox"
                                     name="urinalysis"
@@ -135,7 +135,7 @@ const LabOrderForm = () => {
 
                     <button
                         type="submit"
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        className="bg-sky-100 text-gray-800 px-4 py-2 rounded hover:bg-blue-400"
                     >
                         Submit Lab Order
                     </button>
