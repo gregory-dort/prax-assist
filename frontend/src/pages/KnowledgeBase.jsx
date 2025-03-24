@@ -27,7 +27,7 @@ const Knowledgedatabase = () => {
                 <input
                     type="text"
                     placeholder="Search articles..."
-                    className="w-full p-2 border border-gray-300 rounded-md mb-4 text-gray-800"
+                    className="w-full p-2 border border-blue-300 rounded-md mb-4 text-gray-800"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -36,7 +36,7 @@ const Knowledgedatabase = () => {
                 {filteredArticles.length > 0 ? (
                     <ul className="space-y-3">
                         {filteredArticles.map((article) => (
-                            <li key={article.id} className="p-4 bg-gray-100 rounded-md shadow-md">
+                            <li key={article.id} className="p-4 bg-sky-100 rounded-md shadow-md hover:bg-blue-300">
                                 <h2 className="text-lg font-semibold text-gray-800">{article.title}</h2>
                                 <p className="text-sm text-gray-600">{article.category} - {article.date}</p>
                             </li>

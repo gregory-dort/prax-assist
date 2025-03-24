@@ -36,7 +36,7 @@ const PatientRecords = () => {
                 <input
                     type="text"
                     placeholder="Search by patient name..."
-                    className="w-full p-2 border border-gray-300 rounded-md mb-4 text-gray-800"
+                    className="w-full p-2 border border-blue-300 rounded-md mb-4 text-gray-800"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -47,7 +47,7 @@ const PatientRecords = () => {
                         {filteredPatients.map((patient) => (
                             <li
                                 key={patient.id}
-                                className="p-4 bg-gray-100 rounded-md shadow-md cursor-pointer hover:bg-gray-200"
+                                className="p-4 bg-sky-100 rounded-md shadow-md cursor-pointer hover:bg-blue-300"
                                 onClick={() => setSelectedPatient(patient)}
                             >
                                 <h2 className="text-lg font-semibold text-gray-800">{patient.name}</h2>
