@@ -7,7 +7,7 @@ const cors = require("cors");
 
 // Importing DB Elements & Routes
 const authRoutes = require("./routes/authRoutes");
-const aiRoutes = require("./routes/aiRoutes");
+//const aiRoutes = require("./routes/aiRoutes");
 const connectDB = require("./config/db");
 const User = require("./models/User");
 const bcrypt = require("bcryptjs");
