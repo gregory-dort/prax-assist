@@ -42,7 +42,7 @@ router.post("/analyze", async (req, res) => {
 
     ${promptData}
     
-    Provide clear explanantions and recommended actions for the physician.`;
+    Provide clear explanations and recommended actions for the physician.`;
 
     try {
         const response = await openai.chat.completions.create({
@@ -51,8 +51,10 @@ router.post("/analyze", async (req, res) => {
             max_tokens: 500,
         });
         res.status(200).json({ response: response.choices[0].message.content });
+        console.log("AI response:", response.choices[0].message.content);
     } catch (error) {
         console.error("OpenAI API error: ", error);
+        console.log("Error getting AI response");
         res.status(500).json({ error: "Error getting AI response"})
     }
 });
