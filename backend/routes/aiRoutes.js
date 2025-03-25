@@ -30,12 +30,31 @@ router.post("/analyze", async (req, res) => {
     
     if (matchedConditions.length === 0) {
         return res.status(404).json({ error: "No matching conditions found."});
-    
-    
     }
-})
 
-// AI Routes
+    const promptData = matchedConditions.map((condition) => {
+        return `Condition: ${condition.Term}\nDescription: ${condition.Definition}`;
+    }).join("\n\n");
 
+    const prompt = `
+    A patient is currently experiencing these symptoms: ${symptoms}.
+    Based on the following conditions, suggest possible diagnoses and treatments
+
+    ${promptData}
+    
+    Provide clear explanantions and recommended actions for the physician.`;
+
+    try {
+        const response = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "system", content: prompt }],
+            max_tokens: 500,
+        });
+        res.status(200).json({ response: response.choices[0].message.content });
+    } catch (error) {
+        console.error("OpenAI API error: ", error);
+        res.status(500).json({ error: "Error getting AI response"})
+    }
+});
 
 module.exports = router;

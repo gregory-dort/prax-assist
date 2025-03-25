@@ -1,76 +1,84 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 
-const API_URL = 'http://localhost:5001/api/messages';
+const API_URL = 'http://localhost:5001/api/ai/analyze';
 
 function Chatbot() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        const fetchMessages = async () => {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                setMessages(data);
-            } catch (error) {
-                console.error('Error fetching messages:', error);
-            }
-        };
-
-        fetchMessages();
-        const interval = setInterval(fetchMessages, 3000);
-        return () => clearInterval(interval);
-    }, []);
-
+        if(messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
+    
     const sendMessage = async () => {
         if (!input) return;
 
-        const message = { sender: 'User', content: input};
+       const userMessage = { sender: 'User', content: input};
+       setMessages((prev) => [...prev, userMessage])
         try {
-            await fetch(API_URL, {
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(message),
+                body: JSON.stringify({ symptoms: input}),
             });
-            setInput('');
+
+            const data = await response.json();
+
+            if (data.error) {
+                setMessages((prev) => [...prev, {sender: 'AI', content: data.error}])
+            } else {
+                setMessages((prev) => [
+                    ...prev,
+                    { sender: 'AI', content: data.response },
+                ]);
+            }
         } catch (error) {
-            console.error('Error sending message:', error);
+            console.error('Error sending message: ', error);
+            setMessages((prev) => [
+                ...prev,
+                { sender: 'AI', content: 'An error occurred. Please try again.' },
+            ]);
         }
+        setInput('');
     };
 
     return(
-        <div className = 'min-h-screen flex flex-col bg-gray-500'>
+        <div className = 'min-h-screen flex flex-col bg-gray-50'>
             <Navbar />
             <div className = 'flex-1 flex flex-col items-center justify-center p-6'>
-                <div className = 'w-full max-w-2xl bg-gray-400 shadow-lg rounded-2xl flex flex-col h-[500px]'>
-                    <div className = 'flex-1 overflow-y-auto p-6 space-y-3'>
+                <div className = 'w-full max-w-2xl bg-sky-100 shadow-lg rounded-2xl flex flex-col h-[500px]'>
+                    <div className = 'flex-1 overflow-y-auto p-6 space-y-3 flex flex-col justify-end'>
                         {messages.map((msg, idx) => (
                             <div 
                                 key = {idx}
-                                className = {`chat ${
-                                    msg.sender === 'User' ? 'chat-end' : 'chat-start'
-                                }`}
+                                className = {`chat ${msg.sender === 'User' ? 'chat-end' : 'chat-start'}`}
                             >
                                 <div
                                     className = {`chat-bubble ${
-                                        msg.sender === 'User' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'
+                                        msg.sender === 'User' ? 'bg-blue-300 text-gray-800' : 'bg-white text-gray-800'
                                     }`}
                                 >
                                     <strong>{msg.sender}: </strong> {msg.content}
                                 </div>
                             </div>
                         ))}
-                        <div className = 'p-6 border-t flex items-center gap-2'>
-                            <input
-                                type = "text"
-                                value = {input}
-                                onChange = {(e) => setInput(e.target.value)}
-                                placeholder = "Type a message..."
-                                className = "input input-bordered w-full rounded-full"
-                            />
-                            <button onClick = {sendMessage} className = "btn btn-primary">Send</button>
-                        </div>
+                        
+                        <div ref={messagesEndRef}></div>
+                    </div>
+
+                    <div className = 'p-4 border-t flex items-center gap-2 sticky bottom-0 bg-gray-200'>
+                        <input
+                            type = "text"
+                            value = {input}
+                            onChange = {(e) => setInput(e.target.value)}
+                            placeholder = "Describe your patient's current symptoms..."
+                            className = "input input-bordered border-2 border-transparent w-full rounded-full"
+                        />
+                        <button onClick = {sendMessage} className = "btn rounded-2xl bg-white hover:bg-blue-400 text-gray-800">Send</button>
                     </div>
                 </div>
             </div>
