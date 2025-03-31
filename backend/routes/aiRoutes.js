@@ -5,7 +5,7 @@ const csv = require("csv-parser");
 const { OpenAI } = require("openai");
 
 const router = express.Router();
-const openai = new OpenAI({ apikey: process.env.OPENAI_KEY });
+const openai = new OpenAI({ apikey: process.env.OPENAI_API_KEY });
 
 // Empty array to store medical data from csv file
 let medicalData = [];
