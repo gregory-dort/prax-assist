@@ -6,7 +6,7 @@ const Card = ({ title, description, image, link}) => {
     const navigate = useNavigate();
 
     return(
-        <div className = "card bg-sky-100 shadow-lg hover:shadow-xl transition-transform transform hover:scale-110 cursor-pointer"
+        <div className = "card bg-gradient-to-b from-blue-400 to-sky-100 shadow-lg hover:shadow-xl transition-transform transform hover:scale-110 cursor-pointer"
              role = "button"
              tabIndex = "0"
              onClick = {() => navigate(link)}

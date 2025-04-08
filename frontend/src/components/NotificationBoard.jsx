@@ -11,7 +11,7 @@ const NotificationBoard = () => {
     };
 
     return(
-       <div className = "card bg-sky-100 shadow-md rounded-lg p-6 w-full md:w-2/3 lg:w-1/2 mx-auto">
+       <div className = "card bg-gradient-to-b from-blue-400 to-sky-100 shadow-md rounded-lg p-6 w-full md:w-2/3 lg:w-1/2 mx-auto">
             <h2 className = "text-lg font-bold text-center text-gray-800 mb-2">🔔 Notifications</h2>
 
             {notifications.length > 0 ? (

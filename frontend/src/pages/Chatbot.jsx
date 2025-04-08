@@ -50,7 +50,7 @@ function Chatbot() {
         <div className = 'min-h-screen flex flex-col bg-gray-50'>
             <Navbar />
             <div className = 'flex-1 flex flex-col items-center justify-center p-6'>
-                <div className = 'w-full max-w-2xl bg-sky-100 shadow-lg rounded-2xl flex flex-col h-[500px]'>
+                <div className = 'w-full max-w-2xl bg-gradient-to-b from-sky-100 to-blue-400 shadow-lg rounded-2xl flex flex-col h-[500px]'>
                     <div className = 'flex-1 overflow-y-auto p-6 space-y-3 flex flex-col justify-end'>
                         {messages.map((msg, idx) => (
                             <div 
@@ -59,7 +59,7 @@ function Chatbot() {
                             >
                                 <div
                                     className = {`chat-bubble ${
-                                        msg.sender === 'User' ? 'bg-blue-300 text-gray-800' : 'bg-white text-gray-800'
+                                        msg.sender === 'User' ? 'bg-gray-200 text-gray-800' : 'bg-white text-gray-800'
                                     }`}
                                 >
                                     <strong>{msg.sender}: </strong> {msg.content}
@@ -76,7 +76,7 @@ function Chatbot() {
                             value = {input}
                             onChange = {(e) => setInput(e.target.value)}
                             placeholder = "Describe your patient's current symptoms..."
-                            className = "input input-bordered border-2 border-transparent w-full rounded-full"
+                            className = "input bg-white text-gray-800 w-full rounded-full"
                         />
                         <button onClick = {sendMessage} className = "btn rounded-2xl bg-white hover:bg-blue-400 text-gray-800">Send</button>
                     </div>
