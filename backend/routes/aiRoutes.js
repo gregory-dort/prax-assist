@@ -1,5 +1,4 @@
 const express = require("express");
-const {} = require("../controllers/aiController");
 const fs = require("fs");
 const csv = require("csv-parser");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
