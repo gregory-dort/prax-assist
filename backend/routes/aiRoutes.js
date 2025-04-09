@@ -17,7 +17,11 @@ router.post("/analyze", async (req, res) => {
 
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
-        const prompt = `The user is describing the following symptoms: "${symptoms}". Based on these, suggest the possible illness and a basic treatment plan in clear, short sentences.`;
+        const prompt = `You are a doctor tasked with giving medical advice to a healthcare professional such as a doctor, nurse or physician assistant. Based on this context:
+        <context>
+        The patient is exhibiting these ${symptoms}. 
+        </context>
+        Based on the context suggest the possible illnesses and provide a basic treatment plan in clear and concise sentences.`;
 
         const result = await model.generateContent(prompt);
         const response = result.response;

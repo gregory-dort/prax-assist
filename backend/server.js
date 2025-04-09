@@ -5,12 +5,13 @@ const express = require("express");
 const session = require("express-session")
 const cors = require("cors");
 
-// Importing DB Elements & Routes
+// Importing DB Elements & Controller / Admin Routes
 const authRoutes = require("./routes/authRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 const connectDB = require("./config/db");
 const User = require("./models/User");
 const bcrypt = require("bcryptjs");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Calling DB Connection
 connectDB();
@@ -46,6 +47,7 @@ app.use(
 
 app.use("/api", authRoutes);
 app.use("/api/ai", aiRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get("/", (req, res) => {
     res.send("PraxAssist is running...");
