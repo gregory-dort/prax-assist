@@ -29,7 +29,7 @@ const Navbar = () => {
                                 <img src={DefaultAvatar} alt="User Avatar" />
                             </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-8 z-10 p-2 shadow bg-sky-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm bg-gradient-to-b from-blue-400 to-sky-100 dropdown-content mt-8 z-10 p-2 shadow-lg rounded-box w-52">
                         <li><Profile /></li>
                         <li><Link to = "/settings" className = "text-gray-800">Settings</Link></li>
                         <li><Logout /></li>
@@ -49,7 +49,7 @@ const Navbar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </label>
-                <ul tabIndex = {0} className = "menu menu-sm dropdown-content mt-8 z-10 p-2 shadow bg-sky-100 rounded-box w-52">
+                <ul tabIndex = {0} className = "menu menu-sm bg-gradient-to-b from-blue-400 to-sky-100 dropdown-content mt-8 z-10 p-2 shadow-lg rounded-box w-52">
                     <li><Profile /></li>
                     <li><Link to = "/settings" className = "text-gray-800">Settings</Link></li>
                     <li><Logout /></li>

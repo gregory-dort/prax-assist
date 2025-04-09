@@ -23,7 +23,7 @@ const NotificationBoard = () => {
                                 <p className = "text-sm text-gray-800">{notif.time}</p>
                             </div>
                             <button onClick={() => dismissNotification(notif.id)}
-                            className = "btn btn-circle bg-gray-900 text-white text-lg flex items-center justify-center w-8 h-8 hover:scale-110 transition-transform duration-200"
+                            className = "btn btn-circle bg-gray-900 text-white text-lg flex items-center justify-center w-8 h-8 hover:scale-105 hover:shadow-xl transition-transform duration-200"
                             >
                                 <span className = "text-bold">X</span>
                             </button>
