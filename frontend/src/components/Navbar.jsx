@@ -7,6 +7,7 @@ import DefaultAvatar from '../assets/default-avatar.jpg';
 const Navbar = () => {
     return (
         <div className = "navbar bg-blue-400 shadow-md px-6 items-center justify-center sticky top-0 left-0 w-full z-50">
+            
             {/* Logo and Text */}
             <div className = "flex-none flex items-center space-x-2">
                 <Link to = "/dashboard" className = "text-xl font-bold text-white flex items-center">
@@ -14,9 +15,10 @@ const Navbar = () => {
                     <span className = "ml-2">PraxAssist</span>
                 </Link>
             </div>
+
             {/* Navbar Text */}
             <div className = "flex-1 text-center">
-                <span className = "text-white text-3xl font-bold p-4">Providing A Best Effort For Our Patients! </span>
+                <span className = "text-white text-3xl text-center font-bold p-4">Providing The Best Healthcare For Our Patients! </span>
             </div>
 
             {/* Desktop Navigation */}
