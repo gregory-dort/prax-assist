@@ -11,7 +11,7 @@ function Login() {
         e.preventDefault();
     
         try {
-            const response = await fetch("http://localhost:5001/api/login", {
+            const response = await fetch("/api/login", {
               method: "POST",
               headers: {
                 "Content-type": "application/json",
@@ -23,9 +23,17 @@ function Login() {
             const data = await response.json();
 
             if (response.ok) {
-              alert("Login Successful");
-              navigate("/dashboard"); 
-              //navigate to dashboard after successful login
+              // get user session data
+              const userRes = await fetch("/api/current-user", {
+                credentials: "include"
+              });
+              const userData = await userRes.json();
+
+              if (userData.user?.role === "admin") {
+                navigate("/admin");
+              } else {
+                navigate("/dashboard");
+              }
             } else {
               alert(data.error || "Login failed");
             }

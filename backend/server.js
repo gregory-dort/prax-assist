@@ -53,6 +53,15 @@ app.get("/", (req, res) => {
     res.send("PraxAssist is running...");
 });
 
+// fetches the current user
+app.get("/api/current-user", (req, res) => {
+    if (req.session.user) {
+      res.json({ user: req.session.user });
+    } else {
+      res.status(401).json({ user: null });
+    }
+  });
+
 // User Login Endpoint
 app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
@@ -67,12 +76,15 @@ app.post("/api/login", async (req, res) => {
             return res.status(401).json({ error: "Invalid username or password." });
         }
 
-        const isMatch = bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ error: "Invalid username or password." });
         }
 
-        req.session.user = { username: user.username };
+        req.session.user = { 
+            username: user.username,
+            role: user.role,
+         };
 
         res.status(200).json({ message: "Login successful!" });
     } catch (error) {

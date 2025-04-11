@@ -9,14 +9,14 @@ const AdminDashboard = () => {
 
     // fetch all users
     useEffect(() => {
-        fetch("/api/admin/users")
+        fetch("/api/users")
         .then(res => res.json())
         .then(data => {setUsers(data);})
         .catch(err => console.error(err));
     }, []);
 
     const handleRoleAssign = async () => {
-        const res = await fetch('/api/admin/assign-role', {
+        const res = await fetch('/api/assign-role', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: selectedUser, role })
@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     };
 
     const handleSendNotification = async () => {
-        const res = await fetch('/api/admin/notify', {
+        const res = await fetch('/api/notify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: notification, targetUser })
@@ -36,8 +36,8 @@ const AdminDashboard = () => {
     };
 
     return (
-      <div className="p-6 bg-gray-100 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6 text-center">Admin Dashboard</h1>
+      <div className="p-6 bg-gradient-to-b from-sky-100 to-blue-400 min-h-screen">
+        <h1 className="text-3xl text-gray-800 font-bold mb-6 text-center">Admin Dashboard</h1>
 
         {/* Role Assignment Section */}
         <div className="card bg-base-100 shadow-lg p-6 mb-8">
