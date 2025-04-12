@@ -14,12 +14,14 @@ function CreateAccount() {
         console.log("payload being sent: ", payload);
 
         try {
-            const response = await fetch("http://localhost:5001/api/create-account", {
+            const response = await fetch("/api/create-account", 
+              {
               method: "POST",
               headers: {
                 "Content-type": "application/json",
               },
               body: JSON.stringify(payload),
+              credentials: "include",
             });
 
             const data = await response.json();

@@ -13,7 +13,13 @@ export default defineConfig({
         target: 'http://localhost:5001',
         changeOrigin: true,
         secure: false,
-      },
-    },
-  },
-})
+        // 👇 This is important for cookies/session
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq, req) => {
+            proxyReq.setHeader('Origin', 'http://localhost:5173');
+          });
+        }
+      }
+    }
+  }
+});

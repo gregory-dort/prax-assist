@@ -19,6 +19,7 @@ const AdminDashboard = () => {
         const res = await fetch('/api/assign-role', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: "include",
             body: JSON.stringify({ username: selectedUser, role })
         });
         const data = await res.json();
@@ -29,6 +30,7 @@ const AdminDashboard = () => {
         const res = await fetch('/api/notify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: "include",
             body: JSON.stringify({ message: notification, targetUser })
         });
         const data = await res.json();

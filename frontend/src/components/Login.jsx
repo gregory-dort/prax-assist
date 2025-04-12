@@ -17,7 +17,7 @@ function Login() {
                 "Content-type": "application/json",
               },
               body: JSON.stringify({ username, password }),
-              credentials: "include", // Allow cookies / session storage
+              credentials: "include", 
             });
 
             const data = await response.json();

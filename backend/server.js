@@ -15,8 +15,18 @@ const adminRoutes = require("./routes/adminRoutes");
 
 // Calling DB Connection
 connectDB();
-
 const app = express();
+
+// CORS middleware
+app.use(
+    cors({
+        origin: "http://localhost:5173", // Allows API requests from frontend
+        credentials: true,
+        methods: "GET, POST, PUT, DELETE", // Allows these methods to pass
+        allowedHeaders: "Content-type, Authorization", // Allows these headers to pass
+    })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,18 +40,7 @@ app.use(
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
-            maxAge: 1000 * 60 * 60,
         },
-    })
-);
-
-// CORS middleware
-app.use(
-    cors({
-        origin: "http://localhost:5173", // Allows API requests from frontend
-        credentials: true,
-        methods: "GET, POST, PUT, DELETE", // Allows these methods to pass
-        allowedHeaders: "Content-type, Authorization", // Allows these headers to pass
     })
 );
 
@@ -81,10 +80,8 @@ app.post("/api/login", async (req, res) => {
             return res.status(401).json({ error: "Invalid username or password." });
         }
 
-        req.session.user = { 
-            username: user.username,
-            role: user.role,
-         };
+        req.session.user = { username: user.username, role: user.role, };
+        console.log("Session created:", req.session);
 
         res.status(200).json({ message: "Login successful!" });
     } catch (error) {
