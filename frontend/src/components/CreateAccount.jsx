@@ -17,11 +17,11 @@ function CreateAccount() {
             const response = await fetch("/api/create-account", 
               {
               method: "POST",
+              credentials: "include",
               headers: {
                 "Content-type": "application/json",
               },
               body: JSON.stringify(payload),
-              credentials: "include",
             });
 
             const data = await response.json();
@@ -30,7 +30,7 @@ function CreateAccount() {
               window.alert(data.message); // Shows an alert to say account created successfully
               navigate("/") // Navigates to login page
             } else {
-              window.alert(data.error); // Shows error as an alert
+              window.alert(data.error);
             } 
         } catch (error) {
             console.error("Error:", error);

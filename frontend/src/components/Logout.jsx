@@ -8,7 +8,7 @@ const Logout = () => {
             const response = await fetch("/api/logout", 
             {
                 method: "POST",
-                credentials: "include", // Makes sure that cookies / session tokens are included
+                credentials: "include"
             });
 
             const data = await response.json();

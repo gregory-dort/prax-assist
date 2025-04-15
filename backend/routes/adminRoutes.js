@@ -8,7 +8,7 @@ router.get("/users", isAuthenticated, isAdmin, async (req, res) => {
     try {
         const users = await User.find({}, "username role");
         res.json(users);
-    } catch (err) {
+    } catch (error) {
         res.status(500).json({ error: "Failed to fetch users." });
     }
 });
@@ -24,7 +24,7 @@ router.post("/assign-role", isAdmin, async (req, res) => {
         if (!user) return res.status(404).json({ error: "User not found" });
     
         res.json({ message: `${username} is now a ${role}` });
-    } catch (err) {
+    } catch (error) {
         res.status(500).json({ error: "Server error" });
     }
 });

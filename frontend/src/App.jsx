@@ -30,6 +30,7 @@ function App() {
       <Routes>
         <Route path = "/" element = {<Login />} />
         <Route path = "/create-account" element = {<CreateAccount />} />
+
         {/* Admin Routes */}
         <Route 
         path = "/admin"
@@ -39,6 +40,7 @@ function App() {
           </ProtectedRoute>
         }
         />
+        
         <Route path = "/dashboard" element = {<Dashboard />}/>
         <Route path = "/messages" element = {<Chatbot />}/>
         <Route path = "/knowledgebase" element = {<KnowledgeBase />}/>

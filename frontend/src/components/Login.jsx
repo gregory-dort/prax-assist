@@ -7,41 +7,76 @@ function Login() {
     const[password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    // const handleLogin = async (e) => {
+
+    //     e.preventDefault();
     
-        try {
-            const response = await fetch("/api/login", {
+    //     try {
+    //         const response = await fetch("/api/login", {
+    //           method: "POST",
+    //           credentials: "include",
+    //           headers: { "Content-type": "application/json" },
+    //           body: JSON.stringify({ username, password }), 
+    //         });
+
+    //         const data = await response.json();
+
+    //         if (response.ok) {
+    //           // get user session data
+    //           const userRes = await fetch("/api/current-user", {
+    //             credentials: "include"
+    //           });
+
+    //           const userData = await userRes.json();
+
+    //           if (userData.user?.role === "admin") {
+    //             navigate("/admin");
+    //           } else {
+    //             navigate("/dashboard");
+    //           }
+    //         } else {
+    //           alert(data.error || "Login failed");
+    //         }
+    //     } catch (error) {
+    //       console.error("Login error:", error);
+    //       alert("An error occurred. Please try again.");
+    //     }
+    // };
+
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      console.log("HANDLE LOGIN CLICKED");
+      try {
+        console.log("HANDLE LOGIN TRIED");
+        console.log("Username:", username, "Password:", password);
+          const response = await fetch("/api/login", { //or /api/login when done testing.
               method: "POST",
-              headers: {
-                "Content-type": "application/json",
-              },
+              credentials: "include",
+              headers: { "Content-type": "application/json" },
               body: JSON.stringify({ username, password }),
-              credentials: "include", 
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-              // get user session data
-              const userRes = await fetch("/api/current-user", {
-                credentials: "include"
               });
-              const userData = await userRes.json();
 
-              if (userData.user?.role === "admin") {
-                navigate("/admin");
-              } else {
-                navigate("/dashboard");
-              }
-            } else {
-              alert(data.error || "Login failed");
-            }
-        } catch (error) {
+          if (!response.ok) {
+              const text = await response.text();
+              console.error("Login error:", text);
+              alert("Login failed");
+              return;
+          }
+
+          if(response.headers.get("Content-Type").includes("application/json")){
+              const data = await response.json();
+              alert(data.message); // or navigate or any other logic.
+              navigate("/dashboard");
+          } else {
+              const text = await response.text();
+              alert(text);
+          }
+
+      } catch (error) {
           console.error("Login error:", error);
           alert("An error occurred. Please try again.");
-        }
-    };
+      }
+  };
 
   return (
     <div className ='relative h-screen w-full flex justify-center items-center'>

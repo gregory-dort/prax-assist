@@ -20,10 +20,10 @@ const app = express();
 // CORS middleware
 app.use(
     cors({
-        origin: "http://localhost:5173", // Allows API requests from frontend
+        origin: "http://localhost:5173", 
         credentials: true,
-        methods: "GET, POST, PUT, DELETE", // Allows these methods to pass
-        allowedHeaders: "Content-type, Authorization", // Allows these headers to pass
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-type", "Authorization"] 
     })
 );
 
@@ -48,11 +48,17 @@ app.use("/api", authRoutes);
 app.use("/api/ai", aiRoutes);
 app.use('/api/admin', adminRoutes);
 
-app.get("/", (req, res) => {
-    res.send("PraxAssist is running...");
+app.use("/api", authRoutes);
+
+console.log("Route logging code running");
+console.log("Registered routes:");
+app._router.stack.forEach(function(r){
+  if (r.route && r.route.path){
+    console.log(r.route.path, r.route.methods);
+  }
 });
 
-// fetches the current user
+// Fetches the current user
 app.get("/api/current-user", (req, res) => {
     if (req.session.user) {
       res.json({ user: req.session.user });
@@ -61,78 +67,77 @@ app.get("/api/current-user", (req, res) => {
     }
   });
 
-// User Login Endpoint
+
+// In server.js, before or after your other routes:
+app.post("/api/test-login", (req, res) => {
+  console.log("Test login route hit");
+  res.send("Test login successful");
+});
+
 app.post("/api/login", async (req, res) => {
-    const { username, password } = req.body;
+  console.log("LOGIN API FUNCTION CALLED");
+  try {
+      console.log("Login route hit");
+      const { username, password } = req.body;
+      console.log("Username:", username, "Password:", password);
 
-    try {
-        if(!username || !password) {
-            return res.status(400).json({ error: "username and password are required." });
-        }
+      if (!username || !password) {
+          console.log("Missing username or password");
+          return res.status(400).json({ error: "Username and password are required" });
+      }
 
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(401).json({ error: "Invalid username or password." });
-        }
+      const user = await User.findOne({ username });
+      console.log("User found:", user);
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ error: "Invalid username or password." });
-        }
+      if (!user) {
+          console.log("Invalid credentials - user not found");
+          return res.status(401).json({ error: "Invalid credentials" });
+      }
 
-        req.session.user = { username: user.username, role: user.role, };
-        console.log("Session created:", req.session);
+      const isMatch = await bcrypt.compare(password, user.password);
+      console.log("Password match:", isMatch);
 
-        res.status(200).json({ message: "Login successful!" });
-    } catch (error) {
-        console.error("Login error", error);
-        res.status(500).json({ error: "Server error. Please try again." });
-    }  
+      if (!isMatch) {
+          console.log("Invalid credentials - password mismatch");
+          return res.status(401).json({ error: "Invalid credentials" });
+      }
+
+      req.session.userId = user._id;
+      req.session.user = { username: user.username, role: user.role };
+      console.log("Session created:", req.session);
+
+      res.json({ message: "Login Successful" });
+      console.log("Login successful response sent");
+
+  } catch (error) {
+      console.error("Login error:", error);
+      res.status(500).json({ error: "Server error" });
+  }
 });
 
-// User Registration Endpoint
 app.post("/api/create-account", async (req, res) => {
-    try {
-        const { username, password } = req.body;
+  try {
+      const { username, password } = req.body;
 
-        // Checks if user exists already
-        const existingUser = await User.findOne({ username });
-        if (existingUser) {
-            return res.status(400).json({ error: "Username already exists" });
-        }
+      if(!username || !password) {
+          return res.status(400).json({ error: "Username and password are required" });
+      }
 
-        // Hashes password beforestoring account
-        const hashedPassword = await bcrypt.hash(password, 10);
+      // Checks if username exists
+      const existingUser = await User.findOne({ username }); //Fixed finsOne to findOne
+      if (existingUser) {
+          return res.status(409).json({ error: "Username already exists" });
+      }
 
-        // Creates a new user
-        const newUser = new User({
-            username,
-            password: hashedPassword,
-        });
-        // Saves user to mongodb database
-        await newUser.save();
+      //const hashedPassword = await bcrypt.hash(password, 10);
 
-        res.status(201).json({ message: "Account created successfully!" });
-    } catch (error) {
-        console.error("Error creating account:", error);
-        res.status(500).json({ error: "Server error. Please try again." });
-    }
-});
+      const newUser = new User({ username, password }); // change back to password: hashedPassword after debugging
+      await newUser.save();
 
-app.post("/api/logout", async (req, res) => {
-    try {
-        req.session.destroy((err) => {
-            if (err) {
-                console.error("Logout error:", err);
-                return res.status(500).json({ error: "Failed to log out" });
-            }
-            res.clearCookie("connect.sid");
-            return res.status(200).json({ mesage: "Logged out successfully" });
-        });
-    } catch (error) {
-        console.error("Error in logout:", error);
-        res.status(500).json({ error: "Internal Server error" });
-    }
+      res.json({ message: `Account for ${username} created successfully.` }); //Fixed string literal
+  } catch (error) {
+      res.status(500).json({ error: "Server error" });
+  }
 });
 
 const PORT = process.env.PORT || 5001;
