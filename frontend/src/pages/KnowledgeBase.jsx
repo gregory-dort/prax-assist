@@ -1,21 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
-const Knowledgedatabase = () => {
+const Knowledgebase = () => {
     const [searchQuery, setSearchQuery] = useState("");
+    const [articles, setArticles] = useState([]);
 
-    // Sample articles (You can replace this with dynamic data from an API)
-    const articles = [
-        { id: 1, title: "Understanding Hypertension", category: "Patient Care", date: "March 5, 2025" },
-        { id: 2, title: "Latest Advances in Lab Testing", category: "Lab Results", date: "March 10, 2025" },
-        { id: 3, title: "New AI-driven Diagnostics", category: "Technology", date: "March 8, 2025" },
-        { id: 4, title: "Managing Diabetes: A Guide for Nurses", category: "Patient Care", date: "March 12, 2025" }
-    ];
+    // Fetch articles from your backend
+    useEffect(() => {
+        const fetchArticles = async () => {
+            try {
+                const res = await axios.get("http://localhost:5001/api/articles");
 
-    // Filter articles based on search query
-    const filteredArticles = articles.filter((article) =>
-        article.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+                console.log("Fetched data:", res.data); // Check if it's an array
+                // If it's an array, set it — otherwise, set to empty array
+                if (Array.isArray(res.data)) {
+                    setArticles(res.data);
+                } else {
+                    console.warn("Unexpected response format:", res.data);
+                    setArticles([]);
+                }
+            } catch (err) {
+                console.error("Error fetching articles", err);
+                setArticles([]);
+            }
+        };
+
+        fetchArticles();
+    }, []);
+
+    //  Only filter if `articles` is an array
+    const filteredArticles = Array.isArray(articles)
+        ? articles.filter((article) =>
+            article.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        : [];
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
@@ -36,9 +55,16 @@ const Knowledgedatabase = () => {
                 {filteredArticles.length > 0 ? (
                     <ul className="space-y-3">
                         {filteredArticles.map((article) => (
-                            <li key={article.id} className="p-4 bg-sky-100 rounded-md shadow-md hover:bg-blue-300">
-                                <h2 className="text-lg font-semibold text-gray-800">{article.title}</h2>
-                                <p className="text-sm text-gray-600">{article.category} - {article.date}</p>
+                            <li
+                                key={article.id}
+                                className="p-4 bg-sky-100 rounded-md shadow-md hover:bg-blue-300 transition duration-200"
+                            >
+                                <a href={article.source} target="_blank" rel="noopener noreferrer">
+                                    <h2 className="text-lg font-semibold text-gray-800 underline">{article.title}</h2>
+                                </a>
+                                <p className="text-sm text-gray-600">
+                                    {article.category} - {article.date}
+                                </p>
                             </li>
                         ))}
                     </ul>
@@ -50,4 +76,4 @@ const Knowledgedatabase = () => {
     );
 };
 
-export default Knowledgedatabase;
+export default Knowledgebase;

@@ -1,0 +1,282 @@
+[
+    {
+      "id": 1,
+      "title": "Diabetes Basics",
+      "category": "Patient Care",
+      "date": "March 15, 2025",
+      "source": "https://medlineplus.gov/diabetes.html"
+    },
+    {
+      "id": 2,
+      "title": "Managing High Blood Pressure",
+      "category": "Hypertension",
+      "date": "March 12, 2025",
+      "source": "https://medlineplus.gov/highbloodpressure.html"
+    },
+    {
+      "id": 3,
+      "title": "Heart Disease: Prevention and Risks",
+      "category": "Cardiology",
+      "date": "March 10, 2025",
+      "source": "https://medlineplus.gov/heartdisease.html"
+    },
+    {
+      "id": 4,
+      "title": "Asthma Treatment Guide",
+      "category": "Respiratory",
+      "date": "March 20, 2025",
+      "source": "https://medlineplus.gov/asthma.html"
+    },
+    {
+      "id": 5,
+      "title": "Understanding Depression",
+      "category": "Mental Health",
+      "date": "April 1, 2025",
+      "source": "https://medlineplus.gov/depression.html"
+    },
+    {
+      "id": 6,
+      "title": "COVID-19: Prevention and Treatment",
+      "category": "Infectious Disease",
+      "date": "April 3, 2025",
+      "source": "https://medlineplus.gov/coronavirusinfections.html"
+    },
+    {
+      "id": 7,
+      "title": "Cancer Screening Guidelines",
+      "category": "Oncology",
+      "date": "April 5, 2025",
+      "source": "https://medlineplus.gov/cancer.html"
+    },
+    {
+      "id": 8,
+      "title": "Understanding Stroke and Recovery",
+      "category": "Neurology",
+      "date": "April 6, 2025",
+      "source": "https://medlineplus.gov/stroke.html"
+    },
+    {
+      "id": 9,
+      "title": "Nutrition Tips for Healthy Living",
+      "category": "Nutrition",
+      "date": "April 7, 2025",
+      "source": "https://medlineplus.gov/nutrition.html"
+    },
+    {
+      "id": 10,
+      "title": "Allergy Management and Relief",
+      "category": "Immunology",
+      "date": "April 8, 2025",
+      "source": "https://medlineplus.gov/allergy.html"
+    },
+    {
+      "id": 11,
+      "title": "Mental Health for Teens",
+      "category": "Mental Health",
+      "date": "April 9, 2025",
+      "source": "https://medlineplus.gov/mentalhealth.html"
+    },
+    {
+      "id": 12,
+      "title": "Arthritis: Causes and Care",
+      "category": "Musculoskeletal",
+      "date": "April 10, 2025",
+      "source": "https://medlineplus.gov/arthritis.html"
+    },
+    {
+      "id": 13,
+      "title": "Cholesterol: What You Need to Know",
+      "category": "Cardiology",
+      "date": "April 11, 2025",
+      "source": "https://medlineplus.gov/cholesterol.html"
+    },
+    {
+      "id": 14,
+      "title": "Healthy Sleep Habits",
+      "category": "Wellness",
+      "date": "April 12, 2025",
+      "source": "https://medlineplus.gov/sleepdisorders.html"
+    },
+    {
+      "id": 15,
+      "title": "Back Pain Relief and Prevention",
+      "category": "Orthopedics",
+      "date": "April 13, 2025",
+      "source": "https://medlineplus.gov/backpain.html"
+    },
+    {
+      "id": 16,
+      "title": "Breast Cancer: Detection and Support",
+      "category": "Oncology",
+      "date": "April 14, 2025",
+      "source": "https://medlineplus.gov/breastcancer.html"
+    },
+    {
+      "id": 17,
+      "title": "Exercise for Heart Health",
+      "category": "Cardiology",
+      "date": "April 15, 2025",
+      "source": "https://medlineplus.gov/exerciseandphysicalfitness.html"
+    },
+    {
+      "id": 18,
+      "title": "Flu Symptoms and Treatment",
+      "category": "Infectious Disease",
+      "date": "April 16, 2025",
+      "source": "https://medlineplus.gov/flu.html"
+    },
+    {
+      "id": 19,
+      "title": "Understanding ADHD",
+      "category": "Mental Health",
+      "date": "April 17, 2025",
+      "source": "https://medlineplus.gov/attentiondeficithyperactivitydisorder.html"
+    },
+    {
+      "id": 20,
+      "title": "Kidney Health and Disease Prevention",
+      "category": "Nephrology",
+      "date": "April 18, 2025",
+      "source": "https://medlineplus.gov/kidneydiseases.html"
+    },
+    {
+      "id": 21,
+      "title": "Understanding Alzheimer's Disease",
+      "category": "Neurology",
+      "date": "April 19, 2025",
+      "source": "https://medlineplus.gov/alzheimersdisease.html"
+    },
+    {
+      "id": 22,
+      "title": "Preventing Type 2 Diabetes",
+      "category": "Endocrinology",
+      "date": "April 20, 2025",
+      "source": "https://medlineplus.gov/type2diabetes.html"
+    },
+    {
+      "id": 23,
+      "title": "Childhood Obesity: Causes and Prevention",
+      "category": "Pediatrics",
+      "date": "April 21, 2025",
+      "source": "https://medlineplus.gov/childhoodobesity.html"
+    },
+    {
+      "id": 24,
+      "title": "COPD: Symptoms and Treatment",
+      "category": "Respiratory",
+      "date": "April 22, 2025",
+      "source": "https://medlineplus.gov/copd.html"
+    },
+    {
+      "id": 25,
+      "title": "Skin Cancer: Types and Detection",
+      "category": "Dermatology",
+      "date": "April 23, 2025",
+      "source": "https://medlineplus.gov/skincancer.html"
+    },
+    {
+      "id": 26,
+      "title": "HIV/AIDS: Living with the Virus",
+      "category": "Infectious Disease",
+      "date": "April 24, 2025",
+      "source": "https://medlineplus.gov/hivaids.html"
+    },
+    {
+      "id": 27,
+      "title": "Anxiety Disorders: Symptoms and Care",
+      "category": "Mental Health",
+      "date": "April 25, 2025",
+      "source": "https://medlineplus.gov/anxietydisorders.html"
+    },
+    {
+      "id": 28,
+      "title": "Liver Disease: What You Should Know",
+      "category": "Gastroenterology",
+      "date": "April 26, 2025",
+      "source": "https://medlineplus.gov/liverdiseases.html"
+    },
+    {
+      "id": 29,
+      "title": "Immunizations for Children",
+      "category": "Pediatrics",
+      "date": "April 27, 2025",
+      "source": "https://medlineplus.gov/immunization.html"
+    },
+    {
+      "id": 30,
+      "title": "Menopause: Symptoms and Support",
+      "category": "Women's Health",
+      "date": "April 28, 2025",
+      "source": "https://medlineplus.gov/menopause.html"
+    },
+    {
+      "id": 31,
+      "title": "Prostate Health and Screening",
+      "category": "Men's Health",
+      "date": "April 29, 2025",
+      "source": "https://medlineplus.gov/prostatehealth.html"
+    },
+    {
+      "id": 32,
+      "title": "Tuberculosis (TB): Prevention and Testing",
+      "category": "Infectious Disease",
+      "date": "April 30, 2025",
+      "source": "https://medlineplus.gov/tuberculosis.html"
+    },
+    {
+      "id": 33,
+      "title": "Understanding Epilepsy",
+      "category": "Neurology",
+      "date": "May 1, 2025",
+      "source": "https://medlineplus.gov/epilepsy.html"
+    },
+    {
+      "id": 34,
+      "title": "Vaccines for Travelers",
+      "category": "Travel Health",
+      "date": "May 2, 2025",
+      "source": "https://medlineplus.gov/travelersvaccines.html"
+    },
+    {
+      "id": 35,
+      "title": "Sleep Apnea: Diagnosis and Devices",
+      "category": "Sleep Health",
+      "date": "May 3, 2025",
+      "source": "https://medlineplus.gov/sleepapnea.html"
+    },
+    {
+      "id": 36,
+      "title": "Understanding Lupus",
+      "category": "Autoimmune",
+      "date": "May 4, 2025",
+      "source": "https://medlineplus.gov/lupus.html"
+    },
+    {
+      "id": 37,
+      "title": "Urinary Tract Infections (UTIs)",
+      "category": "Urology",
+      "date": "May 5, 2025",
+      "source": "https://medlineplus.gov/urinarytractinfections.html"
+    },
+    {
+      "id": 38,
+      "title": "Osteoporosis: Bone Health Tips",
+      "category": "Orthopedics",
+      "date": "May 6, 2025",
+      "source": "https://medlineplus.gov/osteoporosis.html"
+    },
+    {
+      "id": 39,
+      "title": "Autism Spectrum Disorders",
+      "category": "Neurodevelopment",
+      "date": "May 7, 2025",
+      "source": "https://medlineplus.gov/autismspectrumdisorder.html"
+    },
+    {
+      "id": 40,
+      "title": "Substance Use and Addiction",
+      "category": "Behavioral Health",
+      "date": "May 8, 2025",
+      "source": "https://medlineplus.gov/substanceuse.html"
+    }
+  ]
