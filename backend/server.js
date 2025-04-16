@@ -51,11 +51,10 @@ app.use(
 
 app.use("/api", authRoutes);
 app.use("/api/ai", aiRoutes);
-<<<<<<< Updated upstream
+
 app.use('/api/admin', adminRoutes);
-=======
 app.use("/api", articleRoutes);
->>>>>>> Stashed changes
+
 
 app.use("/api", authRoutes);
 
@@ -146,6 +145,21 @@ app.post("/api/create-account", async (req, res) => {
       res.json({ message: `Account for ${username} created successfully.` }); //Fixed string literal
   } catch (error) {
       res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.post("/api/logout", async (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (error) {
+          return res.status(500).json({ error: "Could not delete session. please try again." })
+      }
+
+      res.clearCookie("connect.sid", { httpOnly: true, secure: true, sameSite: "Lax" });
+      return res.status(200).json({ message: "Logged out successfully" });
+    });
+  } catch (error) {
+    res.status(500).json({ error: "server error. could not log out" });
   }
 });
 
