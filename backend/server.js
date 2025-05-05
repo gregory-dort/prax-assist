@@ -11,12 +11,9 @@ const aiRoutes = require("./routes/aiRoutes");
 const connectDB = require("./config/db");
 const User = require("./models/User");
 const bcrypt = require("bcryptjs");
-<<<<<<< Updated upstream
 const adminRoutes = require("./routes/adminRoutes");
-=======
 const articleRoutes = require("./routes/articles");
 
->>>>>>> Stashed changes
 
 // Calling DB Connection
 connectDB();
@@ -51,11 +48,8 @@ app.use(
 
 app.use("/api", authRoutes);
 app.use("/api/ai", aiRoutes);
-<<<<<<< Updated upstream
 app.use('/api/admin', adminRoutes);
-=======
 app.use("/api", articleRoutes);
->>>>>>> Stashed changes
 
 app.use("/api", authRoutes);
 
